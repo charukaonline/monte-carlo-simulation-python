@@ -133,6 +133,7 @@ def main():
         description="Monte Carlo Simulation to Estimate Pi and Tray Probabilities"
     )
     parser.add_argument(
+        "-n",
         "--values",
         nargs="+",
         type=int,
@@ -140,7 +141,7 @@ def main():
         help="List of N values to run simulations for (e.g. --values 1000 10000)",
     )
     parser.add_argument(
-        "--excel", action="store_true", help="Save results to an Excel file."
+        "-e","--excel", action="store_true", help="Save results to an Excel file."
     )
     args = parser.parse_args()
 
