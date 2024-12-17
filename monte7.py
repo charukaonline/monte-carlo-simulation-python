@@ -5,7 +5,7 @@ from statistics import mean, mode
 import matplotlib.pyplot as plt
 
 
-def drop_marbles(num_drops, edge_length=1):
+def drop_marbles(num_drops, radius=1):
     """
     Simulate random marble drops on a rectangular table.
     Count marbles that fall into the circular and square trays.
@@ -15,16 +15,16 @@ def drop_marbles(num_drops, edge_length=1):
 
     for _ in range(num_drops):
         # Generate random point within the table
-        x, y = random.uniform(-edge_length, edge_length), random.uniform(
-            -edge_length, edge_length
+        x, y = random.uniform(-radius, radius), random.uniform(
+            -radius, radius
         )
 
-        # Check if the point falls inside the circular tray (radius = edge_length)
-        if x**2 + y**2 <= edge_length**2:
+        # Check if the point falls inside the circular tray (radius = 1)
+        if x**2 + y**2 <= radius**2:
             circular_count += 1
 
-        # Check if the point falls inside the square tray (side length = edge_length)
-        if abs(x) <= edge_length / 2 and abs(y) <= edge_length / 2:  # Centered square
+        # Check if the point falls inside the square tray (side length = radius)
+        if abs(x) <= radius / 2 and abs(y) <= radius / 2:
             square_count += 1
 
     return circular_count, square_count
