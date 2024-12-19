@@ -84,7 +84,7 @@ def save_to_excel(results, filename="pi_simulation_results.xlsx"):
     """
     Save the simulation results to an Excel file.
     """
-    df = pd.DataFrame(results, columns=["Drops", "Trial", "Estimated π"])
+    df = pd.DataFrame(results, columns=["N", "Trial", "Estimated π"])
     df.to_excel(filename, index=False)
     print(f"\nResults saved to {filename}")
 
