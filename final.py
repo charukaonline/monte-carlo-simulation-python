@@ -15,6 +15,7 @@ def drop_marbles(num_drops, radius=1):
 
     for _ in range(num_drops):
         # Generate random point within the table
+        # table width = 6, height = 4
         x, y = random.uniform(-4, 2), random.uniform(-2, 2)
 
         # Check if the point falls inside the circular tray
@@ -23,7 +24,7 @@ def drop_marbles(num_drops, radius=1):
             circular_count += 1
 
         # Check if the point falls inside the rectangular (square shape) tray
-        # (side length = radius) with positioned at (-2.5, 0)
+        # (side length = radius), positioned at (-2.5, 0)
         if -3 <= x <= -2 and -0.5 <= y <= 0.5:
             rectangular_count += 1
 
