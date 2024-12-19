@@ -8,26 +8,27 @@ import matplotlib.pyplot as plt
 def drop_marbles(num_drops, radius=1):
     """
     Simulate random marble drops on a rectangular table.
-    Count marbles that fall into the circular and square trays.
+    Count marbles that fall into the circular and rectangular trays.
     """
     circular_count = 0
-    square_count = 0
+    rectangular_count = 0
 
     for _ in range(num_drops):
         # Generate random point within the table
-        x, y = random.uniform(-radius, radius), random.uniform(
-            -radius, radius
-        )
+        # table width = 6, height = 4
+        x, y = random.uniform(-4, 2), random.uniform(-2, 2)
 
-        # Check if the point falls inside the circular tray (radius = 1)
+        # Check if the point falls inside the circular tray
+        # radius = 1, center = (0, 0)
         if x**2 + y**2 <= radius**2:
             circular_count += 1
 
-        # Check if the point falls inside the square tray (side length = radius)
-        if abs(x) <= radius / 2 and abs(y) <= radius / 2:
-            square_count += 1
+        # Check if the point falls inside the rectangular (square shape) tray
+        # (side length = radius), positioned at (-2.5, 0)
+        if -3 <= x <= -2 and -0.5 <= y <= 0.5:
+            rectangular_count += 1
 
-    return circular_count, square_count
+    return circular_count, rectangular_count
 
 
 def run_simulation(trials, num_drops_list):
@@ -43,16 +44,16 @@ def run_simulation(trials, num_drops_list):
         print(f"\nRunning Simulation for N = {num_drops} (Repetitions = {trials})")
 
         for trial in range(1, trials + 1):
-            circular_count, square_count = drop_marbles(num_drops)
+            circular_count, rectangular_count = drop_marbles(num_drops)
 
             # Estimate pi based on the ratio of counts
-            if square_count > 0:
-                pi_estimate = circular_count / square_count
+            if rectangular_count > 0:
+                pi_estimate = circular_count / rectangular_count
             else:
                 pi_estimate = 0
 
             print(
-                f"  Trial {trial}: Circular={circular_count}, Square={square_count}, π={pi_estimate:.5f}"
+                f"  Trial {trial}: Circular={circular_count}, rectangular={rectangular_count}, π={pi_estimate:.5f}"
             )
             estimates.append(pi_estimate)
 
@@ -83,7 +84,7 @@ def save_to_excel(results, filename="pi_simulation_results.xlsx"):
     """
     Save the simulation results to an Excel file.
     """
-    df = pd.DataFrame(results, columns=["Drops", "Trial", "Estimated π"])
+    df = pd.DataFrame(results, columns=["N", "Trial", "Estimated π"])
     df.to_excel(filename, index=False)
     print(f"\nResults saved to {filename}")
 
