@@ -30,6 +30,8 @@ def drop_marbles(num_drops, radius=1):
 
 def run_simulation(trials, num_drops_list):
 
+    # Run simulation for different values of N and repeat each experiment.
+
     results = []
     mean_values = []
 
