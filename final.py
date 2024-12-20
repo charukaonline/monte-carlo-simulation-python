@@ -25,7 +25,10 @@ def drop_marbles(num_drops, radius=1):
         if -3 <= x <= -2 and -0.5 <= y <= 0.5:
             rectangular_count += 1
 
-    return circular_count, rectangular_count
+    prob_circular = circular_count / num_drops
+    prob_rectangular = rectangular_count / num_drops
+
+    return circular_count, rectangular_count, prob_circular, prob_rectangular
 
 
 def run_simulation(trials, num_drops_list):
@@ -41,7 +44,9 @@ def run_simulation(trials, num_drops_list):
         print(f"\nRunning Simulation for N = {num_drops} (Repetitions = {trials})")
 
         for trial in range(1, trials + 1):
-            circular_count, rectangular_count = drop_marbles(num_drops)
+            circular_count, rectangular_count, prob_circular, prob_rectangular = (
+                drop_marbles(num_drops)
+            )
 
             # Estimate pi based on the ratio of counts
             if rectangular_count > 0:
@@ -50,7 +55,7 @@ def run_simulation(trials, num_drops_list):
                 pi_estimate = 0
 
             print(
-                f"  Trial {trial}: Circular={circular_count}, rectangular={rectangular_count}, π={pi_estimate:.5f}"
+                f"  Trial {trial}: Prob of circular={prob_circular}, Prob of rectangular={prob_rectangular}, π={pi_estimate:.5f}"
             )
             estimates.append(pi_estimate)
 
