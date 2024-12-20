@@ -3,10 +3,7 @@ import random
 
 # function to simulate random marble drops
 def drop_marbles(num_drops, radius=1):
-    """
-    Simulate random marble drops on a rectangular table.
-    Count marbles that fall into the circular and rectangular trays.
-    """
+
     circular_count = 0
     rectangular_count = 0
 
@@ -25,13 +22,18 @@ def drop_marbles(num_drops, radius=1):
         if -3 <= x <= -2 and -0.5 <= y <= 0.5:
             rectangular_count += 1
 
-    return circular_count, rectangular_count
+    prob_circular = circular_count / num_drops
+    prob_rectangular = rectangular_count / num_drops
+
+    return circular_count, rectangular_count, prob_circular, prob_rectangular
 
 
 # Test drop_marbles function with a number of drops
-circular_count, rectangular_count = drop_marbles(10000)
+circular_count, rectangular_count, prob_circular, prob_rectangular = drop_marbles(10000)
 print(f"Marbles in Circular Tray: {circular_count}")
 print(f"Marbles in Rectangular Tray: {rectangular_count}")
+print(f"Probability of landing marbles in Circular Tray: {prob_circular}")
+print(f"Probability of landing marbles in Rectangular Tray: {prob_rectangular}")
 
 # Fraction of the counts
 ratio = circular_count / rectangular_count
