@@ -69,7 +69,7 @@ def run_simulation(trials, num_drops_list):
         try:
             mode_pi = mode(estimates)
         except:
-            mode_pi = "No mode"
+            mode_pi = "All unique estimates"
 
         # Print mean and mode for the current N
         print(f"  Mean π for N={num_drops}: {mean_pi:.5f}")
