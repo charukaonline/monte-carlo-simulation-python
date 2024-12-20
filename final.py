@@ -55,7 +55,7 @@ def run_simulation(trials, num_drops_list):
                 pi_estimate = 0
 
             print(
-                f"  Trial {trial}: Prob of circular={prob_circular:.5f}, Prob of rectangular={prob_rectangular:.5f}, π={pi_estimate:.5f}"
+                f"  Trial {trial}: Prob of circular={prob_circular:.6f}, Prob of rectangular={prob_rectangular:.6f}, π={pi_estimate:.5f}"
             )
             estimates.append(pi_estimate)
 
