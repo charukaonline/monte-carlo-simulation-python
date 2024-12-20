@@ -95,8 +95,8 @@ def save_to_excel(results, filename="simulation_results.xlsx"):
             "N",
             "Trial",
             "Estimated π",
-            "Circular Probability",
-            "Rectangular Probability",
+            "Prob for circular",
+            "Prob for rectangular",
         ],
     )
     df.to_excel(filename, index=False)
