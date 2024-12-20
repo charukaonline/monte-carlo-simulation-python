@@ -25,6 +25,7 @@ def drop_marbles(num_drops, radius=1):
         if -3 <= x <= -2 and -0.5 <= y <= 0.5:
             rectangular_count += 1
 
+    # Compute probabilities
     prob_circular = circular_count / num_drops
     prob_rectangular = rectangular_count / num_drops
 
