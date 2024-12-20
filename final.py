@@ -90,7 +90,7 @@ def plot_convergence(mean_values, filename="pi_convergence_plot.png"):
     # Plot the mean values of π for each N and save the plot to a PNG file.
     n_values = [item[0] for item in mean_values]
     pi_means = [item[1] for item in mean_values]
-    real_pi = [3.14159] * len(n_values)  # The real value of π
+    real_pi = [3.14159] * len(n_values)  # The real value of pi
 
     plt.figure(figsize=(10, 6))
     plt.plot(n_values, pi_means, label="Mean Estimated π", marker="o", linestyle="-")
@@ -107,7 +107,7 @@ def plot_convergence(mean_values, filename="pi_convergence_plot.png"):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Monte Carlo Simulation for Estimating π with Separate Trays"
+        description="Monte Carlo simulation for estimating π"
     )
     parser.add_argument(
         "-t", "--trials", type=int, default=10, help="Number of trials per simulation"
@@ -118,21 +118,21 @@ def main():
         type=int,
         nargs="+",
         default=[1000, 10000, 100000, 1000000],
-        help="List of marble drop counts (space-separated)",
+        help="List of marble drop counts (N)",
     )
     parser.add_argument(
         "-o",
         "--output",
         type=str,
         default="pi_simulation_results.xlsx",
-        help="Output Excel filename",
+        help="Excel filename for simulation results",
     )
     parser.add_argument(
         "-p",
         "--plot",
         type=str,
         default="pi_convergence_plot.png",
-        help="Output plot filename",
+        help="Plot filename for graph",
     )
 
     args = parser.parse_args()
