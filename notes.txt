@@ -1,1 +1,1 @@
-python final.py -t 10 -n 1000 10000 100000 1000000 -o results.xlsx -p plot.png
+python final.py -t 10 -n 1000 10000 100000 1000000

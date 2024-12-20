@@ -55,7 +55,7 @@ def run_simulation(trials, num_drops_list):
                 pi_estimate = 0
 
             print(
-                f"  Trial {trial}: Prob of circular={prob_circular}, Prob of rectangular={prob_rectangular}, π={pi_estimate:.5f}"
+                f"  Trial {trial}: Prob of circular={prob_circular:.5f}, Prob of rectangular={prob_rectangular:.5f}, π={pi_estimate:.5f}"
             )
             estimates.append(pi_estimate)
 
@@ -85,7 +85,7 @@ def run_simulation(trials, num_drops_list):
     return results, mean_values
 
 
-def save_to_excel(results, filename="pi_simulation_results.xlsx"):
+def save_to_excel(results, filename="simulation_results.xlsx"):
 
     # Save the simulation results to an Excel file.
     df = pd.DataFrame(
@@ -141,7 +141,7 @@ def main():
         "-o",
         "--output",
         type=str,
-        default="pi_simulation_results.xlsx",
+        default="simulation_results.xlsx",
         help="Excel filename for simulation results",
     )
     parser.add_argument(
