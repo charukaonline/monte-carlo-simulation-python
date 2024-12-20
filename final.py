@@ -6,10 +6,7 @@ import matplotlib.pyplot as plt
 
 
 def drop_marbles(num_drops, radius=1):
-    """
-    Simulate random marble drops on a rectangular table.
-    Count marbles that fall into the circular and rectangular trays.
-    """
+
     circular_count = 0
     rectangular_count = 0
 
@@ -32,9 +29,7 @@ def drop_marbles(num_drops, radius=1):
 
 
 def run_simulation(trials, num_drops_list):
-    """
-    Run the simulation for different values of N and repeat each experiment.
-    """
+
     results = []
     mean_values = []
 
@@ -81,18 +76,16 @@ def run_simulation(trials, num_drops_list):
 
 
 def save_to_excel(results, filename="pi_simulation_results.xlsx"):
-    """
-    Save the simulation results to an Excel file.
-    """
+
+    # Save the simulation results to an Excel file.
     df = pd.DataFrame(results, columns=["N", "Trial", "Estimated π"])
     df.to_excel(filename, index=False)
     print(f"\nResults saved to {filename}")
 
 
 def plot_convergence(mean_values, filename="pi_convergence_plot.png"):
-    """
-    Plot the mean values of π for each N and save the plot to a PNG file.
-    """
+
+    # Plot the mean values of π for each N and save the plot to a PNG file.
     n_values = [item[0] for item in mean_values]
     pi_means = [item[1] for item in mean_values]
     real_pi = [3.14159] * len(n_values)  # The real value of π
