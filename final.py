@@ -59,6 +59,11 @@ def run_simulation(trials, num_drops_list):
             )
             estimates.append(pi_estimate)
 
+            # Append trial results including probabilities
+            results.append(
+                [num_drops, trial, pi_estimate, prob_circular, prob_rectangular]
+            )
+
         # Compute mean and mode
         mean_pi = mean(estimates)
         try:
@@ -70,11 +75,9 @@ def run_simulation(trials, num_drops_list):
         print(f"  Mean π for N={num_drops}: {mean_pi:.5f}")
         print(f"  Mode π for N={num_drops}: {mode_pi}")
 
-        # Append results
-        for trial, pi_value in enumerate(estimates, start=1):
-            results.append([num_drops, trial, pi_value])
-        results.append([num_drops, "Mean", mean_pi])
-        results.append([num_drops, "Mode", mode_pi])
+        # Append results for mean and mode
+        results.append([num_drops, "Mean", mean_pi, "", ""])
+        results.append([num_drops, "Mode", mode_pi, "", ""])
 
         # Save the mean value for plotting
         mean_values.append((num_drops, mean_pi))
@@ -85,7 +88,16 @@ def run_simulation(trials, num_drops_list):
 def save_to_excel(results, filename="pi_simulation_results.xlsx"):
 
     # Save the simulation results to an Excel file.
-    df = pd.DataFrame(results, columns=["N", "Trial", "Estimated π"])
+    df = pd.DataFrame(
+        results,
+        columns=[
+            "N",
+            "Trial",
+            "Estimated π",
+            "Circular Probability",
+            "Rectangular Probability",
+        ],
+    )
     df.to_excel(filename, index=False)
     print(f"\nResults saved to {filename}")
 
